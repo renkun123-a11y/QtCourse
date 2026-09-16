@@ -66,6 +66,13 @@ void QWMainWind::on_actAbout_triggered()
 
 ## 编译与运行
 
+仓库里附带了两个批处理脚本，双击即可：
+
+- `build.bat`：qmake + mingw32-make + windeployqt 一键编译部署
+- `run.bat`：运行编译好的 exe
+
+手动编译的完整命令如下：
+
 ```bash
 # 1. 生成 Makefile
 mkdir build && cd build
