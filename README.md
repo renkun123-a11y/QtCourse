@@ -102,3 +102,24 @@ windeployqt --release release/samp2_4.exe
 
 - 姓名：张梓鸿
 - 学号：2024414300227
+
+## 示例 4-13：QTableWidget 学生名单
+
+`samp4_13TableWidget/` 在教材 QTableWidget 示例基础上完成以下改造：
+
+- 在 Qt Designer 的 Action Editor 中新增 `actSetStudentList`，并加入主工具栏；工具栏会自动为该 Action 创建 QToolButton。
+- 点击“设置学生名单”后，将右侧表格设置为“学号、姓名、性别、行政班级、院(系)/部、专业、修读性质”7 列，并载入本人前后各两名学生，共 5 条记录。
+- 本人 `2024414300227 张梓鸿` 的学号和姓名使用红色粗体显示。
+- 每个姓名 Item 的 `Qt::UserRole` 保存籍贯信息；选中该学生所在行时，状态栏 QLabel 显示籍贯。
+
+目录实际提供的是 XLS 点名册，其中只能核验学号、姓名和行政班级；性别、院系、专业与修读性质按作业示例统一填写。点名册没有籍贯字段，因此当前关联值为“点名册未提供”；如获得真实籍贯，可直接修改 `on_actSetStudentList_triggered()` 中对应学生的 `nativePlace`。
+
+### 编译
+
+```powershell
+# 请先将 Qt 6.7.2 与对应 MinGW 的 bin 目录加入 PATH
+mkdir build-samp4_13
+cd build-samp4_13
+qmake ..\samp4_13TableWidget\samp4_13.pro
+mingw32-make -j4
+```
